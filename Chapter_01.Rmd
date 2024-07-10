@@ -1,0 +1,46 @@
+---
+title: "1. Data visualization"
+output: pdf_document
+date: "2024-07-10"
+---
+
+```{r setup}
+library(ggplot2)
+library(ggthemes)
+
+custom_ggplot <- function(...) {
+  ggplot(...) +
+    scale_color_colorblind()
+}
+
+theme_set(theme_few())
+set.seed(123)
+```
+
+```{r load}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+```{r penguins}
+glimpse(penguins)
+```
+
+# 1.4 Visualizing distributions
+
+## A categorical variable
+
+```{r}
+ggplot(penguins, aes(x = species)) +
+  geom_bar()
+```
+
+```{r}
+ggplot(penguins, aes(x = fct_infreq(species))) +
+  geom_bar()
+```
+
+```{r}
+ggplot(penguins, aes(x = body_mass_g)) +
+  geom_histogram(binwidth = 200)
+```
