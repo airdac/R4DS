@@ -40,6 +40,8 @@ ggplot(penguins, aes(x = fct_infreq(species))) +
   geom_bar()
 ```
 
+## A numerical variable
+
 ```{r}
 ggplot(penguins, aes(x = body_mass_g)) +
   geom_histogram(binwidth = 200)
