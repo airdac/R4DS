@@ -4,7 +4,13 @@ output: pdf_document
 date: "2024-07-10"
 ---
 
-```{r setup}
+```{r opts_chunk, include=FALSE}
+knitr::opts_chunk$set(tidy = TRUE
+                  , fig.width = 4, fig.height = 3
+                  , fig.align='center')
+```
+
+```{r preliminaries}
 library(ggplot2)
 library(ggthemes)
 
@@ -17,7 +23,7 @@ theme_set(theme_few())
 set.seed(123)
 ```
 
-```{r load}
+```{r libraries, message=FALSE}
 library(tidyverse)
 library(palmerpenguins)
 ```
@@ -30,19 +36,21 @@ glimpse(penguins)
 
 ## A categorical variable
 
-```{r}
-ggplot(penguins, aes(x = species)) +
+```{r barplot}
+custom_ggplot(penguins, aes(x = species)) +
   geom_bar()
 ```
 
-```{r}
-ggplot(penguins, aes(x = fct_infreq(species))) +
+```{r ordered_barplot}
+custom_ggplot(penguins, aes(x = fct_infreq(species))) +
   geom_bar()
 ```
 
 ## A numerical variable
 
-```{r}
-ggplot(penguins, aes(x = body_mass_g)) +
+```{r histogram, warning=FALSE}
+custom_ggplot(penguins, aes(x = body_mass_g)) +
   geom_histogram(binwidth = 200)
 ```
+
+`r 2+2`
